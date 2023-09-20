@@ -1,0 +1,25 @@
+.pinned-container {
+  margin-bottom: 8vh;
+}
+
+.pinned-container h1 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.tasks {
+  border-radius: 8px;
+  background-color: #00000065;
+}
+
+.gallary-tasks {
+  border-radius: 8px;
+  background-color: #00000065;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 100px;
+}
+
+.tasks .task-container:not(:last-child) {
+  border-bottom: 2px solid #59585865;
+}

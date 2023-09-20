@@ -1,0 +1,20 @@
+.edit-cancel-create-task {
+  position: absolute;
+  bottom: 2%;
+  display: flex;
+  gap: 20px;
+}
+
+.task-edit-create-button {
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: solid 1px #fff;
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 5px;
+}
+
+.task-edit-create-button:hover {
+  background-color: #ffffff1e;
+}

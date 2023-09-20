@@ -1,0 +1,45 @@
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.checked-task-container {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-container:hover {
+  background-color: #25252565;
+}
+
+.task-container h1 {
+  font-size: 1.5rem;
+  padding: 0;
+}
+
+.task-container h1,
+.task-container p {
+  margin: 0;
+}
+
+.folder {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

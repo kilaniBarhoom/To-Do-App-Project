@@ -1,0 +1,106 @@
+.all-tasks-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 3%;
+  color: #fff;
+  height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.moreBtn {
+  border: solid #fff 2px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.more-menu {
+  position: relative;
+}
+
+.more-menu .more-Info {
+  border-radius: 5px;
+  text-align: center;
+  background-color: #000000cb;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  width: 25ch;
+}
+
+.more-menu .more-Info ul {
+  margin: 0;
+  padding: 0;
+}
+
+.more-menu .more-Info ul li {
+  list-style-type: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  gap: 5px;
+}
+
+.more-menu .more-Info ul li:nth-child(1) {
+  border-bottom: solid 1px #3f3f3f6a;
+}
+
+.more-menu .more-Info ul li:hover {
+  background-color: #3f3f3f6a;
+}
+
+.search-create-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 3vh 0;
+  width: 100%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40%;
+  padding: 5px 10px;
+  background-color: #00000065;
+  border-radius: 5px;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 5px 10px;
+  color: #fff;
+  width: 100%;
+  background-color: transparent;
+}
+
+.create-container {
+  min-width: 10%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #00000065;
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-container:hover {
+  background-color: #000000f8;
+}
