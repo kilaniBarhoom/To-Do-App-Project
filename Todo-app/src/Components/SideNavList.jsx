@@ -64,13 +64,6 @@ export default function NestedList() {
         <ListItemText primary="Pinned" />
       </ListItemButton>
 
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <FolderIcon />
-        </ListItemIcon>
-        <ListItemText primary="Folders" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
