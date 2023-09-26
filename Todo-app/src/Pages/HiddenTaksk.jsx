@@ -22,7 +22,7 @@ export default function AllTasks() {
   return (
     <div className="displayTasks">
       <Header
-        title="Pinned Tasks"
+        title="Hidden Tasks"
         setViewAsGallary={setViewAsGallary}
         viewAsGallary={viewAsGallary}
       />
