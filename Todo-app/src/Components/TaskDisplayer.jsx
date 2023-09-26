@@ -19,7 +19,7 @@ export default function TaskDisplayer() {
   const { todos, updateTodo, deleteTodo } = useContext(TodoContext);
 
   const { taskid } = useParams();
-  const { title, task, dateCreated, folder } = todos.find(({ id }) => {
+  const { title, task, dateCreated, checked, hidden } = todos.find(({ id }) => {
     return id == taskid;
   });
   const [newTitle, setNewTitle] = useState(title);
@@ -57,8 +57,11 @@ export default function TaskDisplayer() {
             readOnly={edit ? false : true}
           />
         </h1>
+
         <div className="date">
           <strong>{dateCreated}</strong>
+          <span>{checked ? "Checked" : ""}</span>
+          <span>{hidden ? "Hidden" : ""}</span>
         </div>
       </div>
       <div className="text-info">
@@ -80,12 +83,12 @@ export default function TaskDisplayer() {
           >
             {edit ? "Save" : "Edit"}
           </button>
-          <button onClick={() => nav("/")} className="task-operation-button">
+          <button onClick={() => nav(-1)} className="task-operation-button">
             Done
           </button>
         </div>
         <button
-          onClick={() => handleDeleteClick()}
+          onClick={handleDeleteClick}
           className="task-operation-button task-delete-button"
         >
           <DeleteIcon /> Delete
@@ -108,7 +111,6 @@ function DeleteModal({ id, title, setOpenDeleteModal, deleteTodo }) {
             variant="outlined"
             color="error"
             onClick={() => {
-              // console.log(`id : ${id} title: ${title}`);
               deleteTodo(id);
               setOpenDeleteModal(false);
               nav("/");

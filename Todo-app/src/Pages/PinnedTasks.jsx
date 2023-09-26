@@ -12,10 +12,13 @@ export default function AllTasks() {
   const [taskSearch, setTaskSearch] = useState("");
   const [viewAsGallary, setViewAsGallary] = useState(false);
 
-  const { todos, deleteTodo, pinTodo } = useContext(TodoContext);
+  const { todos, deleteTodo, pinTodo, checkTodo, hideTodo } =
+    useContext(TodoContext);
 
   useEffect(() => {
-    setPinnedTasks([...todos.filter((task) => task.pinned === true)]);
+    setPinnedTasks([
+      ...todos.filter((task) => task.pinned === true && task.hidden === false),
+    ]);
   }, [todos]);
 
   return (
@@ -49,28 +52,34 @@ export default function AllTasks() {
       </div>
       {pinnedTasks.length ? (
         <div className="pinned-container">
-          <div className="tasks">
+          <div className={`tasks ${viewAsGallary ? "gallary-tasks" : ""}`}>
             {pinnedTasks
               .filter((task) => {
                 return taskSearch
                   ? task.title.toLowerCase().includes(taskSearch.toLowerCase())
                   : task;
               })
-              .map(({ id, title, dateCreated, folder, pinned }, ind) => {
-                return (
-                  <Task
-                    key={ind}
-                    id={id}
-                    isPinned={true}
-                    title={title}
-                    dateCreated={dateCreated}
-                    folder={folder}
-                    pinned={pinned}
-                    deleteTodo={deleteTodo}
-                    pinTodo={pinTodo}
-                  />
-                );
-              })}
+              .map(
+                ({ id, title, dateCreated, folder, pinned, checked }, ind) => {
+                  return (
+                    <Task
+                      key={ind}
+                      id={id}
+                      isPinned={true}
+                      title={title}
+                      dateCreated={dateCreated}
+                      folder={folder}
+                      pinned={pinned}
+                      checked={checked}
+                      hidden={false}
+                      deleteTodo={deleteTodo}
+                      pinTodo={pinTodo}
+                      checkTodo={checkTodo}
+                      hideTodo={hideTodo}
+                    />
+                  );
+                }
+              )}
           </div>
         </div>
       ) : (

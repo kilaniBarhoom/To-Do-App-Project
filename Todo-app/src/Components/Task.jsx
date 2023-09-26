@@ -1,6 +1,7 @@
 import "../Styles/Task.css";
 import FolderIcon from "@mui/icons-material/Folder";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // import { Details } from "../Contexts/Taskdetails";
 
 export default function Task({
@@ -9,27 +10,39 @@ export default function Task({
   dateCreated,
   folder,
   pinned,
+  checked,
+  hidden,
   deleteTodo,
   pinTodo,
+  checkTodo,
+  hideTodo,
 }) {
   const navigate = useNavigate();
 
   function handleTaskOperation(tr) {
-    if (
-      tr.innerText.toLowerCase() === "unpin" ||
-      tr.innerText.toLowerCase() === "pin" ||
-      tr.innerText.toLowerCase() === "options" ||
-      tr.innerText.toLowerCase() === "duplicate" ||
-      tr.innerText.toLowerCase() === "delete" ||
-      tr.innerText.toLowerCase() === ""
-    ) {
-    } else {
-      navigate(`/task/${id}`);
+    const innerText = tr.innerText;
+    if (innerText) {
+      const lowerText = innerText.toLowerCase();
+      if (
+        lowerText === "unpin" ||
+        lowerText === "pin" ||
+        lowerText === "unhide" ||
+        lowerText === "hide" ||
+        lowerText === "check" ||
+        lowerText === "uncheck" ||
+        lowerText === "options" ||
+        lowerText === "duplicate" ||
+        lowerText === "delete" ||
+        lowerText === ""
+      ) {
+      } else {
+        navigate(`/task/${id}`);
+      }
     }
   }
   return (
     <div
-      className="task-container"
+      className={`task-container ${checked ? "checked-task-container" : ""}`}
       onClick={(e) => {
         handleTaskOperation(e.target);
       }}
@@ -45,8 +58,12 @@ export default function Task({
       <CustomizedMenus
         id={id}
         pinned={pinned}
+        checked={checked}
+        hidden={hidden}
         deleteTodo={deleteTodo}
         pinTodo={pinTodo}
+        checkTodo={checkTodo}
+        hideTodo={hideTodo}
       />
     </div>
   );
@@ -66,6 +83,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import CloseIcon from "@mui/icons-material/Close";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -112,7 +130,17 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-function CustomizedMenus({ id, pinned, deleteTodo, pinTodo }) {
+function CustomizedMenus({
+  id,
+  pinned,
+  checked,
+  hidden,
+  deleteTodo,
+  pinTodo,
+  checkTodo,
+  hideTodo,
+  setOpenDeleteModal,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -127,35 +155,33 @@ function CustomizedMenus({ id, pinned, deleteTodo, pinTodo }) {
     pinTodo(id);
     setAnchorEl(null);
   };
+  const handleCheck = () => {
+    checkTodo(id);
+    setAnchorEl(null);
+  };
   const handleEdit = () => {
     setAnchorEl(null);
     navigate(`/task/${id}`);
-  };
-  const handleDelete = () => {
-    deleteTodo(id);
-    setAnchorEl(null);
   };
 
   return (
     <div>
       <Button
-        id="demo-customized-button"
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         // variant="contained"
         disableElevation
         onClick={handleClick}
-        endIcon={<KeyboardArrowDownIcon />}
+        endIcon={<MenuIcon style={{ fontSize: "2rem" }} />}
         style={{
-          backgroundColor: "#fff",
-          color: "#000",
-          fontSize: "0.7rem",
-          width: "0px !important",
+          color: "#fff",
+          margin: "0",
+          position: "absolute",
+          top: "0",
+          right: "0",
         }}
-      >
-        Options
-      </Button>
+      ></Button>
       <StyledMenu
         id="demo-customized-menu"
         MenuListProps={{
@@ -183,20 +209,23 @@ function CustomizedMenus({ id, pinned, deleteTodo, pinTodo }) {
           <EditIcon style={{ margin: "0" }} />
         </MenuItem>
         <MenuItem
-          onClick={() => console.log("")}
+          onClick={handleCheck}
           disableRipple
           style={{ justifyContent: "space-between" }}
         >
-          Check
+          {checked ? "UnCheck" : "Check"}
           <CheckBoxIcon style={{ margin: "0" }} />
         </MenuItem>
 
         <MenuItem
-          onClick={() => console.log("")}
+          onClick={() => {
+            hideTodo(id);
+            handleClose();
+          }}
           disableRipple
           style={{ justifyContent: "space-between" }}
         >
-          Hide
+          {hidden ? "Unhide" : "Hide"}
           <VisibilityOffIcon style={{ margin: "0" }} />
         </MenuItem>
 
@@ -206,7 +235,10 @@ function CustomizedMenus({ id, pinned, deleteTodo, pinTodo }) {
 
         <Divider sx={{ my: 0.5 }} />
         <MenuItem
-          onClick={handleDelete}
+          onClick={() => {
+            deleteTodo(id);
+            handleClose();
+          }}
           disableRipple
           style={{ justifyContent: "space-between", color: "red" }}
         >

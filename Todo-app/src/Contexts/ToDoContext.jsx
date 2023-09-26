@@ -5,6 +5,7 @@ const TodoContext = createContext();
 
 const TodoProvider = ({ children }) => {
   const todosFromLS = JSON.parse(localStorage.getItem("todos")) || [];
+
   const [todos, setTodos] = useState(todosFromLS);
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -39,9 +40,39 @@ const TodoProvider = ({ children }) => {
     setTodos(updatedTodos);
   };
 
+  const checkTodo = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id == id) {
+        return { ...todo, checked: !todo.checked };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updatedTodos);
+  };
+
+  const hideTodo = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id == id) {
+        return { ...todo, hidden: !todo.hidden };
+      } else {
+        return todo;
+      }
+    });
+    setTodos(updatedTodos);
+  };
+
   return (
     <TodoContext.Provider
-      value={{ todos, addTodo, updateTodo, deleteTodo, pinTodo }}
+      value={{
+        todos,
+        addTodo,
+        updateTodo,
+        deleteTodo,
+        pinTodo,
+        checkTodo,
+        hideTodo,
+      }}
     >
       {children}
     </TodoContext.Provider>

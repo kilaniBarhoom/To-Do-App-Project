@@ -6,6 +6,12 @@
   height: 100vh;
 }
 
+@media screen and (width <= 550px) {
+  .all-tasks-container {
+    width: 100%;
+  }
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -35,6 +41,16 @@
   top: 100%;
   right: 0%;
   width: 25ch;
+}
+
+@media screen and (width <= 400px) {
+  .more-menu .more-Info {
+    width: 18ch;
+  }
+
+  .search-container {
+    width: 50%;
+  }
 }
 
 .more-menu .more-Info ul {
@@ -86,10 +102,6 @@
   color: #fff;
   width: 100%;
   background-color: transparent;
-}
-
-.search-container input:focus {
-  border: solid #fff 1px;
 }
 
 .create-container {

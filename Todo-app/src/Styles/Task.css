@@ -5,16 +5,24 @@
   padding: 0px 15px;
   border-radius: 5px;
   cursor: pointer;
+  position: relative;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.75);
 }
 
 .checked-task-container {
-  background-color: #fff;
+  background-color: rgba(74, 234, 74, 0.464);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 15px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.checked-task-container:hover {
+  background-color: rgba(74, 234, 74, 0.694) !important;
 }
 
 .task-info {
@@ -25,7 +33,7 @@
 }
 
 .task-container:hover {
-  background-color: #25252565;
+  background-color: #000000cb;
 }
 
 .task-container h1 {

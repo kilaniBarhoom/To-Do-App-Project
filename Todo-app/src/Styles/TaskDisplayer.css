@@ -1,11 +1,14 @@
 .displayer-container {
   border-radius: 8px;
-  background-color: #00000065;
+  background-color: #52525238;
   height: 80%;
   width: 100%;
   padding: 15px;
   position: relative;
   margin: 0% auto;
+  box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 8px 6px rgba(0, 0, 0, 0.75);
 }
 
 .header {
@@ -28,6 +31,21 @@
   outline: none;
   width: 100%;
   font-weight: 600;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date span {
+  font-size: 0.8rem;
+  color: green;
+}
+
+.date span:nth-child(3) {
+  color: #fff;
 }
 
 .text-info {

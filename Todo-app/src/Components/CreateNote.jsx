@@ -19,7 +19,10 @@ export default function TaskDisplayer() {
         task: task,
         dateCreated: date,
         dateEdited: date,
+        folder: "None",
         pinned: false,
+        checked: false,
+        hidden: false,
       });
     }
     nav("/");
@@ -55,7 +58,7 @@ export default function TaskDisplayer() {
         >
           Add
         </button>
-        <button className="task-edit-create-button" onClick={() => nav("/")}>
+        <button className="task-edit-create-button" onClick={() => nav(-1)}>
           Cancel
         </button>
       </div>

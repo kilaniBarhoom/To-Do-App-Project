@@ -1,7 +1,6 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import GridViewIcon from "@mui/icons-material/GridView";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function Header({ title, viewAsGallary, setViewAsGallary }) {
   const [showMoreMenu, setShowMoreMenu] = useState(false);
@@ -33,10 +32,6 @@ export default function Header({ title, viewAsGallary, setViewAsGallary }) {
             <li onClick={handleViewAsGallary}>
               {viewAsGallary ? "View as List" : "View as galary"}
               <GridViewIcon />
-            </li>
-            <li>
-              <span>Select</span>
-              <CheckCircleOutlineIcon />
             </li>
           </ul>
         </div>

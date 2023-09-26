@@ -64,18 +64,6 @@ export default function NestedList() {
         <ListItemText primary="Pinned" />
       </ListItemButton>
 
-      <ListItemButton
-        style={{
-          backgroundColor:
-            location.pathname === "/checked" ? "rgba(0, 0, 0, 0.3)" : "#fff",
-        }}
-      >
-        <ListItemIcon>
-          <CheckBoxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Checked" />
-      </ListItemButton>
-
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <FolderIcon />
@@ -120,7 +108,7 @@ export default function NestedList() {
           width: "100%",
         }}
         onClick={() => {
-          navigate("/hiddentasks");
+          navigate("/hidden");
         }}
       >
         <ListItemIcon>

@@ -1,6 +1,7 @@
 import AllTasks from "../Pages/AllTasks";
 import PinnedTasks from "../Pages/PinnedTasks";
 import HiddenTasks from "../Pages/HiddenTaksk";
+import Folders from "../Pages/Folders";
 // import SideNav from "./SideNav";
 import "../Styles/TaskTypeDisplay.css";
 import TaskDisplayer from "./TaskDisplayer";
@@ -11,16 +12,15 @@ import CreateNote from "./CreateNote";
 import { TodoProvider } from "../Contexts/ToDoContext";
 
 export default function TaskTypeDisplay() {
-  const [deletedTasks, setDeletedTasks] = useState([]);
-  const [hiddenTasks, setHiddenTasks] = useState([]);
-
   return (
     <TodoProvider>
       <div className="all-tasks-container">
         <Routes>
           <Route path="/" element={<AllTasks />} />
           <Route path="/pinned" element={<PinnedTasks />} />
-          <Route path="/hiddentasks" element={<HiddenTasks />} />
+          <Route path="/hidden" element={<HiddenTasks />} />
+          {/* <Route path="/folders" element={<Folders />} /> */}
+          {/* <Route path="/folders/:folder" element={<Folder />} /> */}
           <Route path="/task/:taskid" element={<TaskDisplayer />} />
           <Route path="/createnote" element={<CreateNote />} />
         </Routes>
