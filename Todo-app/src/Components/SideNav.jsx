@@ -22,10 +22,11 @@ export default function SideNav() {
       window.removeEventListener("resize", setSize);
     };
   }, [windowWidth]);
+
   return (
     <>
       <aside
-        className={`aside-container`}
+        className="aside-container"
         style={{
           animationName: showSideNav ? "show" : "hide",
           position: showSideNav && windowWidth > 900 ? "relative" : "absolute",
@@ -36,8 +37,7 @@ export default function SideNav() {
           className="close-aside"
           onClick={() => setShowSideNav(false)}
         />
-        <h1 className="aside-header">Notes </h1>
-        <strong>(Comming Soon)</strong>
+        <h1 className="aside-header">Tasks </h1>
         <SideNavList />
       </aside>
 

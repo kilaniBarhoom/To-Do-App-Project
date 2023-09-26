@@ -1,5 +1,5 @@
 import * as React from "react";
-import ListSubheader from "@mui/material/ListSubheader";
+// import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -11,17 +11,15 @@ import DensitySmallIcon from "@mui/icons-material/DensitySmall";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
 import LockIcon from "@mui/icons-material/Lock";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function NestedList() {
   const [open, setOpen] = React.useState(false);
-  const [activeSection, setActiveSection] = React.useState("All");
 
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setOpen(!open);
@@ -40,24 +38,24 @@ export default function NestedList() {
       <ListItemButton
         style={{
           backgroundColor:
-            activeSection === "All" ? "rgba(0, 0, 0, 0.3)" : "#fff",
+            location.pathname === "/" ? "rgba(0, 0, 0, 0.3)" : "#fff",
         }}
         onClick={() => {
-          setActiveSection("All");
+          navigate("/");
         }}
       >
         <ListItemIcon>
           <DensitySmallIcon />
         </ListItemIcon>
-        <ListItemText primary="All Notes" />
+        <ListItemText primary="All Tasks" />
       </ListItemButton>
       <ListItemButton
         style={{
           backgroundColor:
-            activeSection === "Pinned" ? "rgba(0, 0, 0, 0.3)" : "#fff",
+            location.pathname === "/pinned" ? "rgba(0, 0, 0, 0.3)" : "#fff",
         }}
         onClick={() => {
-          setActiveSection("Pinned");
+          navigate("/pinned");
         }}
       >
         <ListItemIcon>
@@ -65,12 +63,19 @@ export default function NestedList() {
         </ListItemIcon>
         <ListItemText primary="Pinned" />
       </ListItemButton>
-      <ListItemButton onClick={handleClick}>
+
+      <ListItemButton
+        style={{
+          backgroundColor:
+            location.pathname === "/checked" ? "rgba(0, 0, 0, 0.3)" : "#fff",
+        }}
+      >
         <ListItemIcon>
           <CheckBoxIcon />
         </ListItemIcon>
         <ListItemText primary="Checked" />
       </ListItemButton>
+
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
           <FolderIcon />
@@ -104,33 +109,18 @@ export default function NestedList() {
           </ListItemButton>
         </List>
       </Collapse>
-      <ListItemButton
-        style={{
-          backgroundColor:
-            activeSection === "recDel" ? "rgba(0, 0, 0, 0.3)" : "#fff",
-        }}
-        onClick={() => {
-          setActiveSection("recDel");
-        }}
-      >
-        <ListItemIcon>
-          <DeleteIcon />
-        </ListItemIcon>
-        <ListItemText primary="Recently Deleted" />
-      </ListItemButton>
 
       <ListItemButton
         id="hidden-container"
         style={{
           backgroundColor:
-            activeSection === "hidden" ? "rgba(0, 0, 0, 0.3)" : "#fff",
+            location.pathname === "/hidden" ? "rgba(0, 0, 0, 0.3)" : "#fff",
           position: "absolute",
           bottom: "0",
           width: "100%",
         }}
         onClick={() => {
-          const s = "hidden";
-          setActiveSection(s);
+          navigate("/hiddentasks");
         }}
       >
         <ListItemIcon>

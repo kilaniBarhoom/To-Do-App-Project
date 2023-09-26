@@ -8,18 +8,9 @@ export default function Header({ title, viewAsGallary, setViewAsGallary }) {
 
   let menuRef = useRef();
 
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setShowMoreMenu(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-  });
-
-  // const handleViewAsGallary = () => {
-  //   setViewAsGallary(!viewAsGallary);
-  // };
+  const handleViewAsGallary = () => {
+    setViewAsGallary(!viewAsGallary);
+  };
 
   return (
     <div className="header-container">
@@ -39,14 +30,13 @@ export default function Header({ title, viewAsGallary, setViewAsGallary }) {
           }}
         >
           <ul>
-            <li>
+            <li onClick={handleViewAsGallary}>
+              {viewAsGallary ? "View as List" : "View as galary"}
               <GridViewIcon />
-              {/* {viewAsGallary ? "View as List" : "View as galary"} */}
-              View as galary (Comming soon...)
             </li>
             <li>
+              <span>Select</span>
               <CheckCircleOutlineIcon />
-              Select (CommingSoon)
             </li>
           </ul>
         </div>

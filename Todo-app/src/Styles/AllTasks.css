@@ -1,3 +1,17 @@
+.displayTasks {
+  max-height: 93vh;
+  overflow-y: scroll;
+}
+
+.displayTasks::-webkit-scrollbar {
+  width: 0px; /* Width of the scrollbar */
+}
+
+.displayTasks::-webkit-scrollbar-thumb {
+  background-color: #808080; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
 .pinned-container {
   margin-bottom: 8vh;
 }

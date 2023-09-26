@@ -1,6 +1,7 @@
 import "../Styles/Task.css";
 import FolderIcon from "@mui/icons-material/Folder";
 import { useNavigate } from "react-router-dom";
+// import { Details } from "../Contexts/Taskdetails";
 
 export default function Task({
   id,
@@ -61,6 +62,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Divider from "@mui/material/Divider";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import PushPinIcon from "@mui/icons-material/PushPin";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import CloseIcon from "@mui/icons-material/Close";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
@@ -160,19 +165,53 @@ function CustomizedMenus({ id, pinned, deleteTodo, pinTodo }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handlePin} disableRipple>
-          <PushPinIcon />
+        <MenuItem
+          onClick={handlePin}
+          disableRipple
+          style={{ justifyContent: "space-between" }}
+        >
           {pinned ? "Unpin" : "Pin"}
+          <PushPinIcon style={{ margin: "0" }} />
         </MenuItem>
 
-        <MenuItem onClick={handleEdit} disableRipple>
-          <EditIcon />
+        <MenuItem
+          onClick={handleEdit}
+          disableRipple
+          style={{ justifyContent: "space-between" }}
+        >
           Edit
+          <EditIcon style={{ margin: "0" }} />
         </MenuItem>
+        <MenuItem
+          onClick={() => console.log("")}
+          disableRipple
+          style={{ justifyContent: "space-between" }}
+        >
+          Check
+          <CheckBoxIcon style={{ margin: "0" }} />
+        </MenuItem>
+
+        <MenuItem
+          onClick={() => console.log("")}
+          disableRipple
+          style={{ justifyContent: "space-between" }}
+        >
+          Hide
+          <VisibilityOffIcon style={{ margin: "0" }} />
+        </MenuItem>
+
+        {
+          //Add to folder accordion
+        }
+
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleDelete} disableRipple style={{ color: "red" }}>
-          <DeleteIcon />
+        <MenuItem
+          onClick={handleDelete}
+          disableRipple
+          style={{ justifyContent: "space-between", color: "red" }}
+        >
           Delete
+          <DeleteIcon style={{ margin: "0", color: "red" }} />
         </MenuItem>
       </StyledMenu>
     </div>
