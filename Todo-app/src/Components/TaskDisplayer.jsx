@@ -83,7 +83,10 @@ export default function TaskDisplayer() {
           >
             {edit ? "Save" : "Edit"}
           </button>
-          <button onClick={() => nav(-1)} className="task-operation-button">
+          <button  onClick={() => {
+              handleEditClick();
+              nav(-1);
+            }} className="task-operation-button">
             Done
           </button>
         </div>
